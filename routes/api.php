@@ -19,8 +19,13 @@ use App\Http\Controllers\Api\AuthController;
 // Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 //     return $request->user();
 // });
-Route::get('users','Api\\ProdutosController@index');
-
-Route::get('users',[produtosController::class, 'index']);
-
+// Route::get('users','Api\\ProdutosController@index');
 Route::post('auth/login', [AuthController::class, 'login']);
+
+Route::middleware('apiJWT')->group(function () {
+    Route::get('/produtos',[produtosController::class, 'index']);
+    Route::get('/produtos/{id}',[produtosController::class, 'show']);
+    Route::delete('/produtos/{id}',[produtosController::class, 'destroy']);
+    Route::post('/produtos',[produtosController::class, 'store']);
+    Route::put('/produtos/{id}',[produtosController::class, 'update']);
+});

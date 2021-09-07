@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ProdutosController;
+use App\Http\Controllers\HomeController;
 
 /*
 |--------------------------------------------------------------------------
@@ -13,7 +14,9 @@ use App\Http\Controllers\ProdutosController;
 | contains the "web" middleware group. Now create something great!
 |
 */
+Auth::routes();
 
+Route::middleware('auth')->group(function () {
 //view
 Route::get('/produtos/novo',[produtosController::class, 'view_create']);
 Route::get('/',[produtosController::class, 'view_read']);
@@ -25,3 +28,4 @@ Route::post('/produtos/novo',[produtosController::class, 'store'])->name('regist
 Route::post('/produtos/{id}',[produtosController::class, 'edit']);
 //delete
 Route::get('/produtos/delete/{id}',[produtosController::class, 'delete']);
+});

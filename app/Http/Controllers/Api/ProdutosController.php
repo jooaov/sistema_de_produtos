@@ -27,7 +27,13 @@ class ProdutosController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $produto=Produto::create([
+            'nome'=>$request->nome,
+            'preco'=>$request->preco,
+            'quantidade'=>$request->quantidade
+        ]);
+        return json_encode($produto);   
+   
     }
 
     /**
@@ -38,7 +44,11 @@ class ProdutosController extends Controller
      */
     public function show($id)
     {
-        //
+        if(Produto::where('id', $id)->exists()){
+            return json_encode(Produto::where('id', $id)->get());
+        }else{
+            return json_encode(["produto não encontrado!"]);
+        }
     }
 
     /**
@@ -50,7 +60,23 @@ class ProdutosController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $produto=Produto::where('id', $id)->update([
+            'nome'=>$request->nome,
+            'preco'=>$request->preco,
+            'quantidade'=>$request->quantidade
+        ]);
+        if($produto){
+            return json_encode([
+                'id'=>$id,
+                'nome'=>$request->nome,
+                'preco'=>$request->preco,
+                'quantidade'=>$request->quantidade
+            ]);
+        }else{
+            return json_encode(['produto não encontrado!']);
+        }
+      
+
     }
 
     /**
@@ -61,6 +87,10 @@ class ProdutosController extends Controller
      */
     public function destroy($id)
     {
-        //
+        if(Produto::where('id', $id)->delete()){
+            return json_encode(['Produto deletado!']);   
+        }else{
+            return json_encode(['Produto não existe!']);   
+        }
     }
 }
