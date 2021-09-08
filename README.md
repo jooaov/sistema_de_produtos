@@ -55,3 +55,7 @@ com o corpo da requisição :
 Apague um produto com a requisição `DELETE` com o id do produto na URL:
 
     http://34.201.51.133/api/produtos/{id}
+
+### API usada
+
+a API usada foi a https://kanye.rest/ usada para mostrar frases aleatorias das musicas do Kayne West
