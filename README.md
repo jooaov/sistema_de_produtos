@@ -6,9 +6,9 @@ CRUD de produtos feito em laravel com API
 
 ### auth
 
-crie um usuário em http://34.201.51.133/ para criar um token JWT na api com a requisição `POST` para:
+crie um usuário em http://3.82.127.187/ para criar um token JWT na api com a requisição `POST` para:
 
-    http://34.201.51.133/api/auth/login
+    http://3.82.127.187/api/auth/login
 
 com o `body`
 
@@ -24,17 +24,17 @@ Onde vem o token de acesso,o tipo de token e o tempo de duração do token.
 
 Liste os produtos com a requisição `GET`
 
-    http://34.201.51.133/api/produtos/
+    http://3.82.127.187/api/produtos/
 
 para pegar um produto especifico coloque o id do produto na frente da url
 
-    http://34.201.51.133/api/produtos/{id}
+    http://3.82.127.187/api/produtos/{id}
 
 ### salvar
 
 Salve um novo produto com o metodo `post`
 
-    http://34.201.51.133/api/produtos
+    http://3.82.127.187/api/produtos
 
 onde o corpo vai as informações do produto como no exemplo:
 
@@ -44,7 +44,7 @@ onde o corpo vai as informações do produto como no exemplo:
 
 edite um produto com o metodo `PUT` com o id do produto editado na frente:
 
-    http://34.201.51.133/api/produtos/{id}
+    http://3.82.127.187/api/produtos/{id}
 
 com o corpo da requisição :
 
@@ -54,7 +54,7 @@ com o corpo da requisição :
 
 Apague um produto com a requisição `DELETE` com o id do produto na URL:
 
-    http://34.201.51.133/api/produtos/{id}
+    http://3.82.127.187/api/produtos/{id}
 
 ### API usada
 
