@@ -1,64 +1,57 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400"></a></p>
+# sistema de produtos
 
-<p align="center">
-<a href="https://travis-ci.org/laravel/framework"><img src="https://travis-ci.org/laravel/framework.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+CRUD de produtos feito em laravel com API
 
-## About Laravel
+## API
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+### auth
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+crie um usuário em http://34.201.51.133/ para criar um token JWT na api com a requisição `POST` para:
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+    http://34.201.51.133/api/auth/login
 
-## Learning Laravel
+com o `body`
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+    {"email": "email_cadastrado","password": "senha_cadastrada"}
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains over 1500 video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+Se a senha e o email estiverem certos ele retornara um json nesse formato
 
-## Laravel Sponsors
+    {"access_token": "123abc","token_type": "bearer","expires_in": 3600}
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the Laravel [Patreon page](https://patreon.com/taylorotwell).
+Onde vem o token de acesso,o tipo de token e o tempo de duração do token.
 
-### Premium Partners
+### Listar
 
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Cubet Techno Labs](https://cubettech.com)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[Many](https://www.many.co.uk)**
-- **[Webdock, Fast VPS Hosting](https://www.webdock.io/en)**
-- **[DevSquad](https://devsquad.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel/)**
-- **[OP.GG](https://op.gg)**
-- **[CMS Max](https://www.cmsmax.com/)**
-- **[WebReinvent](https://webreinvent.com/?utm_source=laravel&utm_medium=github&utm_campaign=patreon-sponsors)**
+Liste os produtos com a requisição `GET`
 
-## Contributing
+    http://34.201.51.133/api/produtos/
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+para pegar um produto especifico coloque o id do produto na frente da url
 
-## Code of Conduct
+    http://34.201.51.133/api/produtos/{id}
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+### salvar
 
-## Security Vulnerabilities
+Salve um novo produto com o metodo `post`
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+    http://34.201.51.133/api/produtos
 
-## License
+onde o corpo vai as informações do produto como no exemplo:
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+    {"nome": "teste23","preco": "12","quantidade": "12"}
+
+### editar
+
+edite um produto com o metodo `PUT` com o id do produto editado na frente:
+
+    http://34.201.51.133/api/produtos/{id}
+
+com o corpo da requisição :
+
+    {"nome": "produto_teste","preco": "1","quantidade": "1"}
+
+### apagar
+
+Apague um produto com a requisição `DELETE` com o id do produto na URL:
+
+    http://34.201.51.133/api/produtos/{id}
